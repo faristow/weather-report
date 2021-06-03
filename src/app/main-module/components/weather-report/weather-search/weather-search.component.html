@@ -1,0 +1,32 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-info">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Weather Report</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav> -->
+
+<div class="container">
+<form [formGroup]= "searchForm">
+  <div class="form-group"  >
+  <input type="text" formControlName="city"
+  class="form-control inp px-3" placeholder="Search your Location">
+  <small *ngIf="f.city.invalid && f.city.touched" class="text-danger">Enter the City Name</small>
+</div>
+
+<div class="row">
+  <div class="col-4 success-button"><button type="submit"
+    [disabled]="searchForm.invalid" class="btn btn-success" (click)="addCity()">
+    Add City</button>
+  </div>
+
+
+</div>
+
+</form>
+</div>
+
+<!-- [ngClass]="{'has-error' : searchForm.get('city').errors &&
+    searchForm.get('city').touched || searchForm.get('city').dirty}" -->
+

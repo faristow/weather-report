@@ -1,0 +1,144 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-success">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Weather Report</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+  </div>
+</nav>
+
+
+
+<div class="container">
+
+  <form [formGroup] ="searchForm">
+    <div class="input-group">
+      <input type="text" formControlName="city" placeholder="Enter City">
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-info px-3" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getByCity()">Search</button>
+    </span>
+    </div>
+    <small *ngIf="f.city.invalid && f.city.touched" class="text-danger" >Enter the City Name</small>
+  </form>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel" *ngIf="popupweather !== undefined"
+          >{{popupweather.name}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="addFavorite()">Add favourite</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <br>
+
+<div class="row row-cols-1 row-cols-md-3 g-4 ">
+
+
+  <!-- <div class="col" >
+    <div class="card h-100" >
+      <div class="card-body" >
+        <div class="row">
+          <div class="col" *ngIf="useLocationWeather !== undefined">
+            <h4 class="card-title">{{useLocationWeather.name}}</h4>
+            <p class="card-title">Matla</p>
+          </div>
+
+          <div class="col" *ngIf="useLocationWeather !== undefined">
+            <img src="http://openweathermap.org/img/wn/{{useLocationWeather.weather[0].icon}}@2x.png" class="card-img-top" alt="...">
+          </div>
+          <div class="col" *ngIf="useLocationWeather !== undefined">
+            <h4 class="card-text">{{useLocationWeather.main.temp}}</h4>
+            <p class="card-title">{{useLocationWeather.weather[0].description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="col" *ngFor ="let weather of weatherItem">
+    <div class="card h-100" >
+      <div class="card-body" >
+        <div class="row">
+          <div class="col" >
+            <h4 class="card-title">{{weather.name}}</h4>
+            <p class="card-title">Matla</p>
+          </div>
+
+          <div class="col">
+            <img src="http://openweathermap.org/img/wn/{{weather.icon}}@2x.png" class="card-img-top" alt="...">
+          </div>
+          <div class="col">
+            <h4 class="card-text">{{weather.temp}}</h4>
+            <p class="card-title">{{weather.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col">
+    <div class="card h-100"   [routerLink]="['/weather-search']">
+      <div class="card-body ">
+        <div class="row">
+          <!-- <div class="col"><i class="fa fa-heart" aria-hidden="true"></i></div> -->
+          <div class="col-8"><h4 class="card-title">Add New Location</h4></div>
+          <div class="col-2"></div>
+          <div class="col-2"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<!-- <div class="row">
+  <div class="col-3"><i class="fa fa-gratipay fa-2x" aria-hidden="true"></i></div>
+  <br>
+  <div class="col-6"><h4 class="card-text">New Location</h4></div>
+
+  <div class="col-3"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true"></i></div>
+</div> -->
+
+
+<!--  <i class="fa fa-bars fa-2x" aria-hidden="true"></i> -->
+    <!-- <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div> -->
+
+
+
+
+
+
+
+
+
